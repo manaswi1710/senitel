@@ -1,0 +1,153 @@
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* Cybersecurity Dark Theme */
+    --background: 220 20% 6%;
+    --foreground: 210 20% 92%;
+
+    --card: 220 18% 10%;
+    --card-foreground: 210 20% 92%;
+
+    --popover: 220 18% 10%;
+    --popover-foreground: 210 20% 92%;
+
+    /* Neon Green Primary - Safe/Secure */
+    --primary: 142 76% 45%;
+    --primary-foreground: 220 20% 6%;
+
+    /* Dark surfaces */
+    --secondary: 220 16% 14%;
+    --secondary-foreground: 210 20% 85%;
+
+    --muted: 220 14% 18%;
+    --muted-foreground: 215 15% 55%;
+
+    --accent: 190 80% 50%;
+    --accent-foreground: 220 20% 6%;
+
+    /* Danger Red */
+    --destructive: 0 85% 55%;
+    --destructive-foreground: 210 20% 98%;
+
+    /* Warning Amber */
+    --warning: 38 95% 55%;
+    --warning-foreground: 220 20% 6%;
+
+    /* Safe Green */
+    --safe: 142 76% 45%;
+    --safe-foreground: 220 20% 6%;
+
+    --border: 220 15% 20%;
+    --input: 220 15% 16%;
+    --ring: 142 76% 45%;
+
+    --radius: 0.75rem;
+
+    /* Custom glows */
+    --glow-green: 0 0 30px hsl(142 76% 45% / 0.4);
+    --glow-red: 0 0 30px hsl(0 85% 55% / 0.4);
+    --glow-amber: 0 0 30px hsl(38 95% 55% / 0.4);
+    --glow-cyan: 0 0 30px hsl(190 80% 50% / 0.4);
+
+    --sidebar-background: 220 18% 8%;
+    --sidebar-foreground: 210 20% 92%;
+    --sidebar-primary: 142 76% 45%;
+    --sidebar-primary-foreground: 220 20% 6%;
+    --sidebar-accent: 220 16% 14%;
+    --sidebar-accent-foreground: 210 20% 92%;
+    --sidebar-border: 220 15% 20%;
+    --sidebar-ring: 142 76% 45%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground font-sans antialiased;
+    font-family: 'Inter', sans-serif;
+  }
+
+  code, pre, .font-mono {
+    font-family: 'JetBrains Mono', monospace;
+  }
+}
+
+@layer utilities {
+  .text-glow-green {
+    text-shadow: 0 0 10px hsl(142 76% 45% / 0.6), 0 0 20px hsl(142 76% 45% / 0.4);
+  }
+
+  .text-glow-red {
+    text-shadow: 0 0 10px hsl(0 85% 55% / 0.6), 0 0 20px hsl(0 85% 55% / 0.4);
+  }
+
+  .text-glow-cyan {
+    text-shadow: 0 0 10px hsl(190 80% 50% / 0.6), 0 0 20px hsl(190 80% 50% / 0.4);
+  }
+
+  .box-glow-green {
+    box-shadow: 0 0 20px hsl(142 76% 45% / 0.3), 0 0 40px hsl(142 76% 45% / 0.1);
+  }
+
+  .box-glow-red {
+    box-shadow: 0 0 20px hsl(0 85% 55% / 0.3), 0 0 40px hsl(0 85% 55% / 0.1);
+  }
+
+  .box-glow-amber {
+    box-shadow: 0 0 20px hsl(38 95% 55% / 0.3), 0 0 40px hsl(38 95% 55% / 0.1);
+  }
+
+  .gradient-border {
+    background: linear-gradient(var(--background), var(--background)) padding-box,
+                linear-gradient(135deg, hsl(142 76% 45%), hsl(190 80% 50%)) border-box;
+    border: 1px solid transparent;
+  }
+
+  .scan-line {
+    background: linear-gradient(
+      to bottom,
+      transparent 0%,
+      hsl(142 76% 45% / 0.1) 50%,
+      transparent 100%
+    );
+    animation: scan 2s linear infinite;
+  }
+
+  @keyframes scan {
+    0% { transform: translateY(-100%); }
+    100% { transform: translateY(100%); }
+  }
+
+  @keyframes pulse-glow {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.5; }
+  }
+
+  .animate-pulse-glow {
+    animation: pulse-glow 2s ease-in-out infinite;
+  }
+
+  @keyframes terminal-blink {
+    0%, 50% { opacity: 1; }
+    51%, 100% { opacity: 0; }
+  }
+
+  .animate-terminal-blink {
+    animation: terminal-blink 1s steps(1) infinite;
+  }
+
+  .bg-grid {
+    background-image: 
+      linear-gradient(hsl(220 15% 15% / 0.5) 1px, transparent 1px),
+      linear-gradient(90deg, hsl(220 15% 15% / 0.5) 1px, transparent 1px);
+    background-size: 40px 40px;
+  }
+}
