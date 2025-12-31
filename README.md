@@ -40,6 +40,19 @@ Our custom RegEx parser intelligently scans codebases for:
 * Node.js: `npm install`, `package.json`, and `import` statements.
 
 ---
+### 🔄 Security Logic Flow
+```mermaid
+graph TD
+    A[User Inputs GitHub URL] --> B[FastAPI Backend]
+    B --> C{Parser Engine}
+    C -->|Extract Dependencies| D[pypi.org & npmjs.com API]
+    D -->|Status 404?| E[🔴 HALLUCINATION DETECTED]
+    D -->|Status 200?| F[Typosquatting Check]
+    F -->|Levenshtein > 95%| G[🟠 TYPOSQUATTING RISK]
+    F -->|Levenshtein < 95%| H[🟢 SAFE PACKAGE]
+```
+
+  ---
 
 ## 🚀 Key Features
 
@@ -62,43 +75,35 @@ Follow these steps to run Sentinel locally for testing.
 ### 1. Clone the Repository
 
 ```Bash
-git clone https://github.com/yashmakra/code-guardian.git
-cd code-guardian
+git clone https://github.com/manaswi1710/senitel.git
+cd senitel
 ```
 ### 2. Setup Backend (FastAPI)
 
-## Navigate to backend
 ```Bash
+# Navigate to backend
 cd backend
-```
 
-## Create virtual environment (Windows)
-```Bash
+# Create virtual environment (Windows)
 py -3.11 -m venv venv
 .\venv\Scripts\activate
-```
 
-## Install dependencies
-```Bash
+# Install dependencies
 pip install -r requirements.txt
-```
 
-## Start the Server
-```Bash
+# Start the Server
 uvicorn main:app --reload
 ```
 
 ### 3. Setup Frontend (React)
 
 Open a new terminal:
-## Navigate to project root
 ```Bash
+# Navigate to project root
 cd frontend
 npm install
-```
 
-## Start the UI
-```Bash
+# Start the UI
 npm run dev
 ```
 
