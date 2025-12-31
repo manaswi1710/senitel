@@ -32,7 +32,7 @@ We cross-reference every dependency found in `requirements.txt`, `package.json`,
 
 ### 2. Levenshtein Distance & RapidFuzz
 To detect **Typosquatting**, we use the `rapidfuzz` library to calculate the Levenshtein Distance (string similarity ratio) between the scanned package and a whitelist of the top 5,000 most popular open-source packages.
-* *Threshold:* If similarity is >90% but not an exact match, it is flagged as **High Risk**.
+* *Threshold:* If similarity is >=85% but not an exact match, it is flagged as **High Risk**.
 
 ### 3. File Parser Engine
 Our custom RegEx parser intelligently scans codebases for:
