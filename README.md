@@ -48,8 +48,8 @@ graph TD
     C -->|Extract Dependencies| D[pypi.org & npmjs.com API]
     D -->|Status 404?| E[🔴 HALLUCINATION DETECTED]
     D -->|Status 200?| F[Typosquatting Check]
-    F -->|Levenshtein > 95%| G[🟠 TYPOSQUATTING RISK]
-    F -->|Levenshtein < 95%| H[🟢 SAFE PACKAGE]
+    F -->|Levenshtein >= 85%| G[🟠 TYPOSQUATTING RISK]
+    F -->|Levenshtein < 85%| H[🟢 SAFE PACKAGE]
 ```
 
   ---
